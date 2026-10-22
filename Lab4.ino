@@ -16,23 +16,23 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 // RX, TX pin definitions for Bluetooth
 SoftwareSerial BTSerial(12, 11); 
 
-def LeftTriangle() {
-  display.ClearDisplay();
+void LeftTriangle() {
+  display.clearDisplay();
   display.fillTriangle(110, 15, 110, 49, 75, 32, WHITE);
   display.display();
 }
 
-def RightTriangle() {
-  display.ClearDisplay();
+void RightTriangle() {
+  display.clearDisplay();
   display.fillTriangle(75, 15, 75, 49, 110, 32, WHITE);
   display.display();
 }
 
-def carHazards() {
+void carHazards() {
   for (int i = 0; i < 4; i++){
     RightTriangle();
     LeftTriangle();
-    sleep(0.5);
+    delay(0.5);
   }
 }
 
@@ -47,7 +47,7 @@ void setup() {
   //oled setup
   if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
      Serial.println(F("SSD1306 allocation failed"));
-     sleep(5);
+     delay(5);
      return;
   }
   // Clear the buffer.
@@ -58,7 +58,7 @@ void setup() {
   display.setTextColor(WHITE);
   display.setCursor(0, 28);
   display.println("Hello world!");
-  sleep(5);
+  delay(5);
   display.clearDisplay();
 }
 
@@ -71,6 +71,6 @@ void loop() {
   // }
 
   RightTriangle();
-  sleep(3);
+  delay(3);
 
 }
